@@ -12,6 +12,7 @@ router.patch('/content/:id', contentController.updateContent);
 router
   .route('/content/:id/fields')
   .post(contentController.createField)
-  .delete(contentController.deleteField);
+  .delete(contentController.deleteField)
+  .patch(contentController.updateField);
 
 module.exports = router;

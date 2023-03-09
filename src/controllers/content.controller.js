@@ -72,10 +72,26 @@ const deleteField = async (req, res) => {
   }
 };
 
+const updateField = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { oldName, newName } = req.body;
+    const content = await contentService.updateField(id, oldName, newName);
+    res.status(200).json(content);
+  } catch (error) {
+    if (error instanceof HTTPError) {
+      res.status(error.code).json({ message: error.message });
+    } else {
+      res.status(500).json('Internal server error');
+    }
+  }
+};
+
 module.exports = {
   createField,
   updateContent,
   createContent,
   getAllContents,
   deleteField,
+  updateField,
 };

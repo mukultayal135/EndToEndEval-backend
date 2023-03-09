@@ -60,10 +60,29 @@ const deleteField = async (id, field) => {
   });
   return result;
 };
+
+const updateField = async (id, field, newField) => {
+  const entryExist = await Entry.findOne({ where: { contentTypeId: id } });
+  if (entryExist) {
+    throw new HTTPError(409, 'Cannot edit the field');
+  }
+  const content = await ContentType.findOne({ where: { id } });
+  const fieldsArray = content.fields;
+  const index = fieldsArray.indexOf(field);
+  if (index > -1) {
+    fieldsArray[index] = newField;
+  }
+  const result = await ContentType.update(
+    { fields: fieldsArray },
+    { where: { id } }
+  );
+  return result;
+};
 module.exports = {
   createContent,
   getAllContents,
   createField,
   updateContent,
   deleteField,
+  updateField,
 };
