@@ -11,7 +11,7 @@ const tokenValidation = async (req, res, next) => {
     const { error } = tokenSchema.validate();
     if (error) throw new HTTPError(400, error.details[0].message);
     const verifyToken = await axios.post(
-      'http://localhost:4000/token/validate',
+      'http://serverauth:4000/token/validate',
       {},
       { headers: { Authorization: `Bearer ${token}` } }
     );
