@@ -7,11 +7,7 @@ const tokenValidation = require('./src/middlewares/tokenValidation');
 
 const app = express();
 const port = 8000;
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-  })
-);
+app.use(cors());
 
 app.use(tokenValidation.tokenValidation);
 app.use(express.json());

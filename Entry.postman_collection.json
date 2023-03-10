@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "f949bd28-e86e-4c51-855d-16a709056d78",
+		"name": "Entry",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25483957"
+	},
+	"item": [
+		{
+			"name": "CreateEntry",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllEntries",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateEntry",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjc4MzYxMjAzLCJleHAiOjE2NzgzNjQ4MDN9.aNYj4FmKrA9_3NM0oM7mDyQIgOtGF6_P0W_M8d3CsE4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"sdfsdfsdf\",\n            \"website\": \"jhgjhj\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/13/entry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"13",
+						"entry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteEntry",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
