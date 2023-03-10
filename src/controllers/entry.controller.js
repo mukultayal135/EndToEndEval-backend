@@ -1,11 +1,11 @@
-const entityService = require('../services/entry.service');
+const entryService = require('../services/entry.service');
 const HTTPError = require('../errors/HTTPError');
 
 const createEntry = async (req, res) => {
   try {
     const data = req.body;
     const { id } = req.params;
-    const result = await entityService.createEntry(id, data);
+    const result = await entryService.createEntry(id, data);
     res.status(201).json(result);
   } catch (error) {
     if (error instanceof HTTPError) {
@@ -18,7 +18,7 @@ const createEntry = async (req, res) => {
 const getAllEntries = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await entityService.getAllEntries(id);
+    const result = await entryService.getAllEntries(id);
     res.status(200).json(result);
   } catch (error) {
     if (error instanceof HTTPError) {
@@ -33,8 +33,7 @@ const updateEntry = async (req, res) => {
   try {
     const data = req.body;
     const { id } = req.params;
-    console.log(id, data);
-    const result = await entityService.updateEntry(id, data);
+    const result = await entryService.updateEntry(id, data);
     res.status(200).json(result);
   } catch (error) {
     if (error instanceof HTTPError) {
@@ -48,7 +47,7 @@ const updateEntry = async (req, res) => {
 const deleteEntry = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await entityService.deleteEntry(id);
+    const result = await entryService.deleteEntry(id);
     res.status(200).json(result);
   } catch (error) {
     if (error instanceof HTTPError) {

@@ -41,6 +41,7 @@ const createField = async (id, field) => {
   });
   return result;
 };
+
 const deleteField = async (id, field) => {
   const content = await ContentType.findOne({ where: { id } });
   const fieldsArray = content.fields;
@@ -78,6 +79,7 @@ const updateField = async (id, field, newField) => {
   );
   return result;
 };
+
 module.exports = {
   createContent,
   getAllContents,
