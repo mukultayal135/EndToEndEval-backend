@@ -1,15 +1,17 @@
 const express = require('express');
 const entryController = require('../controllers/entry.controller');
+const { validateParams } = require('../middlewares/joiValidation');
+const schemas = require('../schemas/schema');
 
 const router = express.Router();
 
 router
   .route('/:id/entry')
-  .post(entryController.createEntry)
-  .get(entryController.getAllEntries);
+  .post(validateParams(schemas.idSchema), entryController.createEntry)
+  .get(validateParams(schemas.idSchema), entryController.getAllEntries);
 router
   .route('/:id/entry')
-  .put(entryController.updateEntry)
-  .delete(entryController.deleteEntry);
+  .put(validateParams(schemas.idSchema), entryController.updateEntry)
+  .delete(validateParams(schemas.idSchema), entryController.deleteEntry);
 
 module.exports = router;
